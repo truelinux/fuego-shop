@@ -11,9 +11,6 @@ body {
   width: 75%;
   margin: auto;
 }
-.navbar-nav {
-  margin: auto;
-}
 .nav-item {
   transition: all 0.5s ease-in-out;
 }
@@ -22,12 +19,8 @@ body {
 }
 .navbar img {
   margin: auto;
-  width: 50%;
+  width: 85%;
   display: block;
-}
-
-.logo-container {
-  width: 50%;
 }
 
 .text-click {

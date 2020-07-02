@@ -7,8 +7,8 @@ export class Nav extends Component {
     return (
       <React.Fragment>
         <nav className="navbar navbar-fixed-top header">
-          <ul className="nav navbar-nav float-xs-left">
-            <li className="nav-item">
+          <ul className="nav navbar-nav float-left mx-auto col-3 col-md-2">
+            <li className="nav-item mx-auto">
               <Link to="/cart">
                 <div href="#" className="text-click">
                   CART
@@ -16,14 +16,14 @@ export class Nav extends Component {
               </Link>
             </li>
           </ul>
-          <div className="logo-container">
+          <div className="logo-container col-5 col-md-3">
             <a href="/">
               <img src={Logo} alt="Fuego LTD" />
             </a>
           </div>
 
-          <ul className="nav navbar-nav float-xs-right">
-            <li className="nav-item">
+          <ul className="nav navbar-nav float-left mx-auto col-3 col-md-2">
+            <li className="nav-item mx-auto">
               <Link to="/about">
                 <div href="#" className="text-click">
                   ABOUT
