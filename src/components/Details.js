@@ -53,7 +53,14 @@ export default class Details extends Component {
                         value.openModal(id);
                       }}
                     >
-                      {inCart ? "inCart" : "add to cart"}
+                      {inCart ? (
+                        <p>
+                          <i className="fas fa-minus-cirlce" />
+                          Remove
+                        </p>
+                      ) : (
+                        <i className="fas fa-cart-arrow-down" />
+                      )}
                     </div>
                   </div>
                 </div>

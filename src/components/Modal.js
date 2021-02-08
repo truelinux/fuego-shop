@@ -29,7 +29,9 @@ export default class Modal extends Component {
                       <Link to="/">
                         <div
                           className="text-click"
-                          onClick={() => closeModal()}
+                          onClick={() => {
+                            closeModal();
+                          }}
                         >
                           store
                         </div>
