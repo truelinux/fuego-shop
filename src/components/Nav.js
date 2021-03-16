@@ -17,9 +17,7 @@ export class Nav extends Component {
             </li>
           </ul>
           <div className="logo-container col-5 col-md-3">
-            <a href="/">
-              <img src={Logo} alt="Fuego LTD" />
-            </a>
+            <img src={Logo} alt="Fuego LTD" />
           </div>
 
           <ul className="nav navbar-nav float-left mx-auto col-3 col-md-2">

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ProductConsumer } from "../context";
 import PropTypes from "prop-types";
 
-export default class Product extends Component {
+export default class Order extends Component {
   render() {
     const { id, title, img, price, inCart } = this.props.product;
     return (
@@ -19,30 +19,11 @@ export default class Product extends Component {
                 <Link to="/details">
                   <img src={img} alt="product" className="card-img-top" />
                 </Link>
-
-                <button
-                  className="cart-btn"
-                  disabled={inCart ? true : false}
-                  onClick={() => {
-                    value.addToCart(id);
-                    value.openModal(id);
-                  }}
-                >
-                  {inCart ? (
-                    <p className="text-green">In Cart</p>
-                  ) : (
-                    <i className="fas fa-cart-arrow-down" />
-                  )}
-                </button>
               </div>
             )}
           </ProductConsumer>
           <div className="card-footer d-flex justify-content-between">
             <p className="align-self-center mb-0">{title}</p>
-            <h5 className="text-blue font-italic mb-0">
-              <span className="mr-1">$</span>
-              {price}
-            </h5>
           </div>
         </div>
       </ProductWrapper>
@@ -50,7 +31,7 @@ export default class Product extends Component {
   }
 }
 
-Product.propTypes = {
+Order.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number,
     img: PropTypes.string,
@@ -98,8 +79,6 @@ const ProductWrapper = styled.div`
     color: var(--purpleDark);
     font-size: 1.4rem;
     border-radius: 0.5rem 0 0 0;
-    transform: scale(0);
-    transition: all 0.5s;
   }
   .img-container: hover .cart-btn {
     transform: scale(1.2);

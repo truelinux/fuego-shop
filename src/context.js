@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { storeProducts, detailProduct } from "./data";
 import { runInThisContext } from "vm";
+import Product from "./components/Product";
 
 const ProductContext = React.createContext();
 
@@ -13,6 +14,8 @@ class ProductProvider extends Component {
     modalProduct: detailProduct,
     cartSubTotal: 0,
     cartTax: 0,
+    order: [],
+    payment: [],
     cartTotal: 0,
   };
 
@@ -45,21 +48,20 @@ class ProductProvider extends Component {
 
   addToCart = (id) => {
     let tempProducts = [...this.state.products];
-    const product = this.getItem(id);
-    const index = tempProducts.indexOf(product);
+    const index = tempProducts.indexOf(this.getItem(id));
+    const product = tempProducts[index];
     product.inCart = true;
     product.count = 1;
     const price = product.price;
     product.total = price;
 
-    this.setState(
-      () => {
-        return { products: tempProducts, cart: [...this.state.cart, product] };
-      },
-      () => {
-        this.addTotals();
-      }
-    );
+    this.setState(() => {
+      return {
+        products: [...tempProducts],
+        cart: [...this.state.cart, product],
+        detailProduct: { ...product },
+      };
+    }, this.addTotals);
   };
 
   openModal = (id) => {
@@ -143,6 +145,12 @@ class ProductProvider extends Component {
     );
   };
 
+  setOrder = (payment, total) => {
+    this.setState(() => {
+      return { order: [...this.state.cart], payment: payment, total: total };
+    });
+  };
+
   clearCart = () => {
     this.setState(
       () => {
@@ -181,6 +189,7 @@ class ProductProvider extends Component {
           increment: this.increment,
           decrement: this.decrement,
           removeItem: this.removeItem,
+          setOrder: this.setOrder,
           clearCart: this.clearCart,
         }}
       >
