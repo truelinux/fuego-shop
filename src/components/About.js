@@ -18,11 +18,11 @@ export default class About extends Component {
                   <p>
                     So it all started in a highschool math class with a couple
                     friends. The minds coming together to think of something
-                    that would soon become an entire brand. I was extremeley
+                    that would soon become an entire brand. I was extremely
                     interested at the fact that we all enjoyed up with the name
                     'Fuego' and immediately started brainstorming ideas for what
-                    is possible. Ofcourse being myself i saw more than just
-                    ideas, I saw a future. It wasnt until around senior year i
+                    is possible. Ofcourse being myself I saw more than just
+                    ideas, I saw a future. It wasnt until around senior year I
                     realized this future was downing on me. As the idea grew on
                     more and more, I had decided that I want this 'brand' to not
                     only be a busniess but a family aswell.
