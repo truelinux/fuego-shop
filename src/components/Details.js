@@ -2,71 +2,91 @@ import React, { Component } from "react";
 import { ProductConsumer } from "../context";
 import { Link } from "react-router-dom";
 import Product from "./Product";
+import styled from "styled-components";
 import { ButtonContainer } from "./Button";
 
 export default class Details extends Component {
   render() {
     return (
-      <ProductConsumer>
-        {(value) => {
-          const {
-            id,
-            company,
-            img,
-            info,
-            price,
-            title,
-            inCart,
-          } = value.detailProduct;
+      <ProductWrapper>
+        <ProductConsumer>
+          {(value) => {
+            const {
+              id,
+              company,
+              img,
+              info,
+              price,
+              title,
+              out,
+              inCart,
+            } = value.detailProduct;
 
-          return (
-            <div className="row">
-              <div className="col-10 mx-auto text-center text-slanter text-blue my-5">
-                <h1>{title}</h1>
-              </div>
+            return (
               <div className="row">
-                <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
-                  <img src={img} className="img-fluid" alt="product" />
+                <div className="col-10 mx-auto text-center text-slanter text-blue my-5">
+                  <h1>{title}</h1>
                 </div>
-                <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
-                  <h2>model: {title}</h2>
-                  <h4 className="text-title text-uppercase text-muted mt-3 mb-2">
-                    made by : <span className="text-uppercase">{company}</span>
-                  </h4>
-                  <h4 className="text-blue">
-                    <strong>
-                      price: <span>$</span> {price}
-                    </strong>
-                  </h4>
-                  <p className="text-capitalize font-weight-bold mt-3 mb-0">
-                    some info about product:
-                  </p>
-                  <p className="text-muted lead">{info}</p>
-                  <div>
-                    <Link to="/">
-                      <div className="text-click">back to products</div>
-                    </Link>
-                    <ButtonContainer
-                      cart
-                      disabled={inCart ? true : false}
-                      onClick={() => {
-                        value.addToCart(id);
-                        value.openModal(id);
-                      }}
-                    >
-                      {inCart ? (
-                        <p className="text-green">In cart</p>
-                      ) : (
-                        <i className="fas fa-cart-arrow-down" />
-                      )}
-                    </ButtonContainer>
+                <div className="row">
+                  <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
+                    <img src={img} className="img-fluid" alt="product" />
+                  </div>
+                  <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
+                    <h2>model: {title}</h2>
+                    <h4 className="text-title text-uppercase text-muted mt-3 mb-2">
+                      made by :{" "}
+                      <span className="text-uppercase">{company}</span>
+                    </h4>
+                    <h4 className="text-blue">
+                      <strong>
+                        price: <span>$</span> {price}
+                      </strong>
+                    </h4>
+                    <p className="text-capitalize font-weight-bold mt-3 mb-0">
+                      some info about product:
+                    </p>
+                    <p className="text-muted lead">{info}</p>
+                    <div>
+                      <Link to="/">
+                        <div className="text-click">back to products</div>
+                      </Link>
+                      <button
+                        className="cart-btn"
+                        disabled={inCart ? true : out ? true : false}
+                        onClick={() => {
+                          value.addToCart(id);
+                          value.openModal(id);
+                        }}
+                      >
+                        {inCart ? (
+                          <p className="text-green">In cart</p>
+                        ) : out ? (
+                          <div className="text-red">SOLD OUT</div>
+                        ) : (
+                          <div>
+                            <i className="fas fa-cart-arrow-down " />
+                            <div className="text-click">Add to cart</div>
+                          </div>
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        }}
-      </ProductConsumer>
+            );
+          }}
+        </ProductConsumer>
+      </ProductWrapper>
     );
   }
 }
+const ProductWrapper = styled.div`
+  .cart-btn {
+    padding: 0.2 rem 0.4rem;
+    background: var(--lightBlue);
+    border: none;
+    color: var(--purpleDark);
+    font-size: 2.5rem;
+    border-radius: 0.5rem 0 0 0;
+  }
+`;

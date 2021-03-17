@@ -10,7 +10,7 @@ export default class About extends Component {
           <div className="container">
             <Title name="ABOUT" title="fuego" />
             <div className="row">
-              <div className="p-5 m-auto col-10 ">
+              <div className="p-2 m-auto col-10 ">
                 <div className="text-center">
                   <strong>WHY</strong>
                 </div>
@@ -31,7 +31,7 @@ export default class About extends Component {
               </div>
             </div>
             <div className="row">
-              <div className="p-5 m-auto col-10 ">
+              <div className="p-2 m-auto col-10 ">
                 <div className="text-center">
                   <strong>HOW</strong>
                 </div>

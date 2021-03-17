@@ -28,7 +28,13 @@ class ProductProvider extends Component {
     storeProducts.forEach((item) => {
       const singleItem = { ...item };
       tempProducts = [...tempProducts, singleItem];
+      if (singleItem.id == localStorage.getItem("id")) {
+        this.setState(() => {
+          return { detailProduct: singleItem };
+        });
+      }
     });
+
     this.setState(() => {
       return { products: tempProducts };
     });
@@ -36,11 +42,14 @@ class ProductProvider extends Component {
 
   getItem = (id) => {
     const product = this.state.products.find((item) => item.id == id);
+
     return product;
   };
 
   handleDetail = (id) => {
+    localStorage.setItem("id", id);
     const product = this.getItem(id);
+    console.log(product);
     this.setState(() => {
       return { detailProduct: product };
     });

@@ -35,13 +35,19 @@ body {
   transform: scale(1.1);
 }
 .text-orange {
-  text-decoration: underline var(--purpleDark);
   color: var(--orangeLight);
   font-weight: 900;
   -webkit-text-stroke: black 1px;
 }
 .text-green {
   color: darkgreen;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 1rem !important ;
+}
+.text-red {
+  color: red;
   margin: 0;
   text-transform: uppercase;
   font-weight: 900;
