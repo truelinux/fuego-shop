@@ -64,6 +64,8 @@ export default function Thanks() {
                         product.total +
                         " x " +
                         product.count +
+                        " - " +
+                        product.size +
                         " <br>";
                       return <Order key={product.id} product={product} />;
                     });

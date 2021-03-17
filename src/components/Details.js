@@ -32,7 +32,6 @@ export default class Details extends Component {
                     <img src={img} className="img-fluid" alt="product" />
                   </div>
                   <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
-                    <h2>model: {title}</h2>
                     <h4 className="text-title text-uppercase text-muted mt-3 mb-2">
                       made by :{" "}
                       <span className="text-uppercase">{company}</span>
@@ -52,15 +51,12 @@ export default class Details extends Component {
                       </Link>
                       <button
                         className="cart-btn"
-                        disabled={inCart ? true : out ? true : false}
+                        disabled={out ? true : false}
                         onClick={() => {
-                          value.addToCart(id);
                           value.openModal(id);
                         }}
                       >
-                        {inCart ? (
-                          <p className="text-green">In cart</p>
-                        ) : out ? (
+                        {out ? (
                           <div className="text-red">SOLD OUT</div>
                         ) : (
                           <div>

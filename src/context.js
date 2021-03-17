@@ -49,28 +49,51 @@ class ProductProvider extends Component {
   handleDetail = (id) => {
     localStorage.setItem("id", id);
     const product = this.getItem(id);
-    console.log(product);
     this.setState(() => {
       return { detailProduct: product };
     });
   };
 
-  addToCart = (id) => {
+  addToCart = (id, size) => {
     let tempProducts = [...this.state.products];
     const index = tempProducts.indexOf(this.getItem(id));
     const product = tempProducts[index];
     product.inCart = true;
-    product.count = 1;
     const price = product.price;
-    product.total = price;
-
-    this.setState(() => {
-      return {
-        products: [...tempProducts],
-        cart: [...this.state.cart, product],
-        detailProduct: { ...product },
-      };
-    }, this.addTotals);
+    let tempCart = [...this.state.cart];
+    const selectedProduct = tempCart.find((item) => item.id === id);
+    const index2 = tempCart.indexOf(selectedProduct);
+    const product2 = tempCart[index2];
+    if (product2) {
+      console.log(product2);
+      if (product2.size == size) {
+        this.increment(id);
+      } else {
+        const jb = { ...product };
+        jb.hidden = true;
+        jb.size = size;
+        jb.id = tempProducts.length + 1;
+        jb.count = 1;
+        this.setState(() => {
+          return {
+            products: [...tempProducts, jb],
+            cart: [...this.state.cart, jb],
+            detailProduct: { ...product },
+          };
+        }, this.addTotals);
+      }
+    } else {
+      product.size = size;
+      product.count = 1;
+      product.total = price;
+      this.setState(() => {
+        return {
+          products: [...tempProducts],
+          cart: [...this.state.cart, product],
+          detailProduct: { ...product },
+        };
+      }, this.addTotals);
+    }
   };
 
   openModal = (id) => {
@@ -95,7 +118,6 @@ class ProductProvider extends Component {
 
     product.count = product.count + 1;
     product.total = product.count * product.price;
-
     this.setState(
       () => {
         return { cart: [...tempCart] };

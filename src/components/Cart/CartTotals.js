@@ -51,6 +51,9 @@ export default class CartTotals extends Component {
                   history={history}
                   setOrder={setOrder}
                 />
+                <Link to="/">
+                  <div className="text-click">back to products</div>
+                </Link>
               </div>
             </div>
           </div>

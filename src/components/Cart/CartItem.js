@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function CartItem({ item, value }) {
-  const { id, title, img, price, total, count } = item;
+  const { id, title, img, price, total, count, size } = item;
   const { increment, decrement, removeItem } = value;
 
   return (
@@ -9,7 +9,7 @@ export default function CartItem({ item, value }) {
       <div className="col-10 mx-auto col-lg-2">
         <img
           src={img}
-          style={{ widht: "5rem", height: "5rem" }}
+          style={{ width: "5rem", height: "5rem" }}
           className="img-fluid"
           alt="product"
         />
@@ -18,7 +18,11 @@ export default function CartItem({ item, value }) {
         <span className="d-lg-none">product:</span>
         {title}
       </div>
-      <div className="col-10 mx-auto col-lg-2">
+      <div className="col-10 mx-auto col-lg-1">
+        <span className="d-lg-none">size :</span>
+        <strong>{size}</strong>
+      </div>
+      <div className="col-10 mx-auto col-lg-1">
         <span className="d-lg-none">price :</span>
         {price}
       </div>
@@ -37,7 +41,7 @@ export default function CartItem({ item, value }) {
           </div>
         </div>
       </div>
-      <div className="col-10 mx-auto col-lg-2">
+      <div className="col-10 mx-auto col-lg-1">
         <div className="cart-icon" onClick={() => removeItem(id)}>
           <i className="fas fa-trash" />
         </div>

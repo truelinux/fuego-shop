@@ -6,9 +6,12 @@ import PropTypes from "prop-types";
 
 export default class Product extends Component {
   render() {
-    const { id, title, img, price, inCart, out } = this.props.product;
+    const { id, title, img, price, inCart, out, hidden } = this.props.product;
     return (
-      <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-4 my-3">
+      <ProductWrapper
+        hidden={hidden}
+        className={hidden ? "" : "col-9 mx-auto col-md-6 col-lg-4 my-3"}
+      >
         <div className="card">
           <ProductConsumer>
             {(value) => (
@@ -22,15 +25,12 @@ export default class Product extends Component {
 
                 <button
                   className="cart-btn"
-                  disabled={inCart ? true : out ? true : false}
+                  disabled={out ? true : false}
                   onClick={() => {
-                    value.addToCart(id);
                     value.openModal(id);
                   }}
                 >
-                  {inCart ? (
-                    <p className="text-green">In Cart</p>
-                  ) : out ? (
+                  {out ? (
                     <p className="text-red">SOLD OUT</p>
                   ) : (
                     <i className="fas fa-cart-arrow-down" />

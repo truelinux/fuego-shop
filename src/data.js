@@ -10,7 +10,9 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
+    size: "?",
     out: true,
+    hidden: false,
   },
   {
     id: 2,
@@ -23,7 +25,9 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
+    size: "?",
     out: false,
+    hidden: false,
   },
   {
     id: 3,
@@ -35,7 +39,9 @@ export const storeProducts = [
     inCart: false,
     count: 0,
     total: 0,
+    size: "?",
     out: false,
+    hidden: false,
   },
 ];
 
@@ -51,6 +57,7 @@ export const detailProduct = [
     inCart: false,
     count: 0,
     total: 0,
+    size: "?",
     out: true,
   },
   {
@@ -64,6 +71,7 @@ export const detailProduct = [
     inCart: false,
     count: 0,
     total: 0,
+    size: "?",
     out: false,
   },
   {
@@ -77,6 +85,7 @@ export const detailProduct = [
     inCart: false,
     count: 0,
     total: 0,
+    size: "?",
     out: false,
   },
 ];

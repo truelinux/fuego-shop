@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { ProductConsumer } from "../context";
 import { Link } from "react-router-dom";
+import Select from "react-select";
+const options = [
+  { value: "SMALL", label: "SMALL" },
+  { value: "MEDIUM", label: "MEDIUM" },
+  { value: "LARGE", label: "LARGE" },
+];
 
 export default class Modal extends Component {
   render() {
@@ -9,7 +15,8 @@ export default class Modal extends Component {
       <ProductConsumer>
         {(value) => {
           const { modalOpen, closeModal } = value;
-          const { img, title, price } = value.modalProduct;
+          const { img, title, price, id } = value.modalProduct;
+          var size = "SMALL";
 
           if (!modalOpen) {
             return null;
@@ -22,7 +29,15 @@ export default class Modal extends Component {
                       id="modal"
                       className="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-5"
                     >
-                      <h5>item added to the cart</h5>
+                      <h5>Choose A Size</h5>
+                      <div className="col-8 m-auto">
+                        <Select
+                          options={options}
+                          onChange={(value) => (size = value.value)}
+                          defaultValue={{ label: "SMALL", value: "SMALL" }}
+                        />
+                      </div>
+
                       <img src={img} className="img-fluid" alt="product" />
                       <h5>{title}</h5>
                       <h5 className="text-muted">price: $ {price}</h5>
@@ -39,9 +54,12 @@ export default class Modal extends Component {
                       <Link to="/cart">
                         <div
                           className="text-click"
-                          onClick={() => closeModal()}
+                          onClick={() => {
+                            value.addToCart(id, size);
+                            closeModal();
+                          }}
                         >
-                          go to cart
+                          ADD
                         </div>
                       </Link>
                     </div>
