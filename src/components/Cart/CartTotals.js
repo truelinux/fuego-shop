@@ -42,6 +42,9 @@ export default class CartTotals extends Component {
                   <span className="text-title"> total :</span>{" "}
                   <strong>$ {cartTotal} </strong>
                 </h5>
+                <h5>
+                  <span className="text-title blue"> NO REFUNDS</span>
+                </h5>
                 <PayPalButton
                   totalAmount={cartTotal}
                   clearCart={clearCart}
