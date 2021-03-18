@@ -61,14 +61,22 @@ class ProductProvider extends Component {
     product.inCart = true;
     const price = product.price;
     let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find((item) => item.id === id);
+    const selectedProduct = tempCart.find(
+      (item) => item.title === product.title
+    );
     const index2 = tempCart.indexOf(selectedProduct);
     const product2 = tempCart[index2];
     if (product2) {
-      console.log(product2);
       if (product2.size == size) {
         this.increment(id);
-      } else {
+        return;
+      }
+      const selectedProduct2 = tempCart.find(
+        (item) => item.title === product.title && item.size === size
+      );
+      const index22 = tempCart.indexOf(selectedProduct2);
+      const product22 = tempCart[index22];
+      if (!product22) {
         const jb = { ...product };
         jb.hidden = true;
         jb.size = size;
@@ -81,6 +89,9 @@ class ProductProvider extends Component {
             detailProduct: { ...product },
           };
         }, this.addTotals);
+        return;
+      } else {
+        this.increment(product22.id);
       }
     } else {
       product.size = size;

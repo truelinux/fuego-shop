@@ -16,9 +16,9 @@ export default class CartTotals extends Component {
     return (
       <React.Fragment>
         {!emptyCart && (
-          <div className="container">
+          <div className="container-fluid col-8">
             <div className="row">
-              <div className="col-10 mt-2 ml-sm-5 ml-md-auto col-sm-8 text-capitalize text-right">
+              <div className="m-auto ml-lg-auto mr-lg-0 text-capitalize text-center text-lg-right">
                 <Link to="/">
                   <button
                     className="btn btn-outline-danger text-uppercase mb-3 px-5"
@@ -43,7 +43,10 @@ export default class CartTotals extends Component {
                   <strong>$ {cartTotal} </strong>
                 </h5>
                 <h5>
-                  <span className="text-title blue"> NO REFUNDS</span>
+                  <span className="text-title blue text-muted">
+                    {" "}
+                    NO REFUNDS
+                  </span>
                 </h5>
                 <PayPalButton
                   totalAmount={cartTotal}
@@ -51,10 +54,12 @@ export default class CartTotals extends Component {
                   history={history}
                   setOrder={setOrder}
                 />
-                <Link to="/">
-                  <div className="text-click">back to products</div>
-                </Link>
               </div>
+            </div>
+            <div className="text-center">
+              <Link to="/">
+                <div className="text-click">back to products</div>
+              </Link>
             </div>
           </div>
         )}
