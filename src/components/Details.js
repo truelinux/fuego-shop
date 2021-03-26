@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Product from "./Product";
 import styled from "styled-components";
 import { ButtonContainer } from "./Button";
+import ImageGallery from "react-image-gallery";
 
 export default class Details extends Component {
   render() {
@@ -14,13 +15,23 @@ export default class Details extends Component {
             const {
               id,
               company,
-              img,
+              img1,
+              img2,
               info,
               price,
               title,
               out,
               inCart,
             } = value.detailProduct;
+
+            const images = [
+              {
+                original: img1,
+              },
+              {
+                original: img2,
+              },
+            ];
 
             return (
               <div className="row">
@@ -29,7 +40,17 @@ export default class Details extends Component {
                 </div>
                 <div className="row">
                   <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
-                    <img src={img} className="img-fluid" alt="product" />
+                    <ImageGallery
+                      className="img-fluid"
+                      alt="product"
+                      items={images}
+                      showNav={false}
+                      showThumbnails={false}
+                      showBullets={true}
+                      showPlayButton={false}
+                      showFullscreenButton={false}
+                    />
+                    ;
                   </div>
                   <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
                     <h4 className="text-title text-uppercase text-muted mt-3 mb-2">

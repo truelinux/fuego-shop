@@ -6,7 +6,16 @@ import PropTypes from "prop-types";
 
 export default class Product extends Component {
   render() {
-    const { id, title, img, price, inCart, out, hidden } = this.props.product;
+    const {
+      id,
+      title,
+      img1,
+      img2,
+      price,
+      inCart,
+      out,
+      hidden,
+    } = this.props.product;
     return (
       <ProductWrapper
         hidden={hidden}
@@ -20,7 +29,7 @@ export default class Product extends Component {
                 onClick={() => value.handleDetail(id)}
               >
                 <Link to="/details">
-                  <img src={img} alt="product" className="card-img-top" />
+                  <img src={img1} alt="product" className="card-img-top" />
                 </Link>
 
                 <button
@@ -55,7 +64,8 @@ export default class Product extends Component {
 Product.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number,
-    img: PropTypes.string,
+    img1: PropTypes.string,
+    img2: PropTypes.string,
     title: PropTypes.string,
     price: PropTypes.number,
     inCart: PropTypes.bool,

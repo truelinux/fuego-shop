@@ -2,7 +2,8 @@ export const storeProducts = [
   {
     id: 1,
     title: "Embroidered Classic Hoodie",
-    img: "img/classic-hoodie.png",
+    img1: "img/classic-hoodie.png",
+    img2: "img/fuego-close.jpg",
     price: 40,
     company: "Fuego",
     info:
@@ -17,7 +18,8 @@ export const storeProducts = [
   {
     id: 2,
     title: "Embroidered Classic Tee",
-    img: "img/fuego-natural.png",
+    img1: "img/fuego-natural.png",
+    img2: "img/fuego-close.jpg",
     price: 20,
     company: "Fuego",
     info:
@@ -32,7 +34,8 @@ export const storeProducts = [
   {
     id: 3,
     title: "Embroidered Rust Logo Tee",
-    img: "img/rust-natural.png",
+    img1: "img/rust-natural.png",
+    img2: "img/rust-close.jpg",
     price: 20,
     company: "Fuego / Rust",
     info: "Only for the wisest of wisemen...",
@@ -49,7 +52,8 @@ export const detailProduct = [
   {
     id: 1,
     title: "Embroidered Classic Hoodie",
-    img: "img/classic-hoodie.png",
+    img1: "img/classic-hoodie.png",
+    img2: "img/fuego-close.jpg",
     price: 40,
     company: "Fuego",
     info:
@@ -63,7 +67,8 @@ export const detailProduct = [
   {
     id: 2,
     title: "Embroidered Classic Tee",
-    img: "img/fuego-natural.png",
+    img1: "img/fuego-natural.png",
+    img2: "img/fuego-close.jpg",
     price: 20,
     company: "Fuego",
     info:
@@ -77,7 +82,8 @@ export const detailProduct = [
   {
     id: 3,
     title: "Embroidered Rust Logo Tee",
-    img: "img/rust-natural.png",
+    img1: "img/rust-natural.png",
+    img2: "img/rust-close.jpg",
     price: 20,
     company: "Fuego / Rust",
     info:

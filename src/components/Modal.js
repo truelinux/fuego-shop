@@ -15,7 +15,7 @@ export default class Modal extends Component {
       <ProductConsumer>
         {(value) => {
           const { modalOpen, closeModal } = value;
-          const { img, title, price, id } = value.modalProduct;
+          const { img1, title, price, id } = value.modalProduct;
           var size = "SMALL";
 
           if (!modalOpen) {
@@ -38,7 +38,7 @@ export default class Modal extends Component {
                         />
                       </div>
 
-                      <img src={img} className="img-fluid" alt="product" />
+                      <img src={img1} className="img-fluid" alt="product" />
                       <h5>{title}</h5>
                       <h5 className="text-muted">price: $ {price}</h5>
                       <Link to="/">
