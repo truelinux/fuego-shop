@@ -54,6 +54,16 @@ class ProductProvider extends Component {
     });
   };
 
+  setColor = (id, color) => {
+    let tempProducts = [...this.state.products];
+    const index = tempProducts.indexOf(this.getItem(id));
+    const product = tempProducts[index];
+    product.color = color;
+    this.setState(() => {
+      return { products: tempProducts };
+    });
+  };
+
   addToCart = (id, size) => {
     let tempProducts = [...this.state.products];
     const index = tempProducts.indexOf(this.getItem(id));
@@ -67,21 +77,16 @@ class ProductProvider extends Component {
     const index2 = tempCart.indexOf(selectedProduct);
     const product2 = tempCart[index2];
     if (product2) {
-      if (product2.size == size) {
-        this.increment(id);
-        return;
-      }
-      const selectedProduct2 = tempCart.find(
-        (item) => item.title === product.title && item.size === size
-      );
-      const index22 = tempCart.indexOf(selectedProduct2);
-      const product22 = tempCart[index22];
-      if (!product22) {
+      if (product2.size == size && product2.color == product.color) {
+        this.increment(product2.id);
+      } else {
         const jb = { ...product };
         jb.hidden = true;
         jb.size = size;
+        jb.color = product.color;
         jb.id = tempProducts.length + 1;
         jb.count = 1;
+        jb.total = price;
         this.setState(() => {
           return {
             products: [...tempProducts, jb],
@@ -89,18 +94,19 @@ class ProductProvider extends Component {
             detailProduct: { ...product },
           };
         }, this.addTotals);
-        return;
-      } else {
-        this.increment(product22.id);
       }
     } else {
-      product.size = size;
-      product.count = 1;
-      product.total = price;
+      const jb = { ...product };
+      jb.hidden = true;
+      jb.size = size;
+      jb.color = product.color;
+      jb.id = tempProducts.length + 1;
+      jb.count = 1;
+      jb.total = price;
       this.setState(() => {
         return {
-          products: [...tempProducts],
-          cart: [...this.state.cart, product],
+          products: [...tempProducts, jb],
+          cart: [...this.state.cart, jb],
           detailProduct: { ...product },
         };
       }, this.addTotals);
@@ -208,7 +214,7 @@ class ProductProvider extends Component {
   addTotals = () => {
     let subTotal = 0;
     this.state.cart.map((item) => (subTotal += item.total));
-    const tempTax = subTotal * 0.1;
+    const tempTax = subTotal * 0.09;
     const tax = parseFloat(tempTax.toFixed(2));
     const total = subTotal + tax;
     this.setState(() => {
@@ -227,6 +233,7 @@ class ProductProvider extends Component {
           handleDetail: this.handleDetail,
           addToCart: this.addToCart,
           openModal: this.openModal,
+          setColor: this.setColor,
           closeModal: this.closeModal,
           increment: this.increment,
           decrement: this.decrement,

@@ -15,7 +15,7 @@ export default class Modal extends Component {
       <ProductConsumer>
         {(value) => {
           const { modalOpen, closeModal } = value;
-          const { img1, title, price, id } = value.modalProduct;
+          const { img1, title, price, id, color } = value.modalProduct;
           var size = "SMALL";
 
           if (!modalOpen) {
@@ -29,8 +29,8 @@ export default class Modal extends Component {
                       id="modal"
                       className="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-5"
                     >
-                      <h5>Choose A Size</h5>
-                      <div className="col-8 m-auto">
+                      <h5>SIZE</h5>
+                      <div className="col-8 m-auto p-3">
                         <Select
                           options={options}
                           onChange={(value) => (size = value.value)}
@@ -38,19 +38,14 @@ export default class Modal extends Component {
                         />
                       </div>
 
-                      <img src={img1} className="img-fluid" alt="product" />
-                      <h5>{title}</h5>
+                      <img
+                        src={"img/" + img1 + "-" + color + ".png"}
+                        className="img-fluid"
+                        alt="product"
+                      />
+                      <h5 className="p-2">{title}</h5>
                       <h5 className="text-muted">price: $ {price}</h5>
-                      <Link to="/">
-                        <div
-                          className="text-click"
-                          onClick={() => {
-                            closeModal();
-                          }}
-                        >
-                          store
-                        </div>
-                      </Link>
+
                       <Link to="/cart">
                         <div
                           className="text-click"
@@ -60,6 +55,16 @@ export default class Modal extends Component {
                           }}
                         >
                           ADD
+                        </div>
+                      </Link>
+                      <Link to="/">
+                        <div
+                          className="text-click"
+                          onClick={() => {
+                            closeModal();
+                          }}
+                        >
+                          STORE
                         </div>
                       </Link>
                     </div>

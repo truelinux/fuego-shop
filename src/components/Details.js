@@ -5,6 +5,7 @@ import Product from "./Product";
 import styled from "styled-components";
 import { ButtonContainer } from "./Button";
 import ImageGallery from "react-image-gallery";
+import Select from "react-select";
 
 export default class Details extends Component {
   render() {
@@ -12,6 +13,7 @@ export default class Details extends Component {
       <ProductWrapper>
         <ProductConsumer>
           {(value) => {
+            const { setColor } = value;
             const {
               id,
               company,
@@ -21,24 +23,33 @@ export default class Details extends Component {
               price,
               title,
               out,
+              color,
+              colors,
               inCart,
             } = value.detailProduct;
 
             const images = [
               {
-                original: img1,
+                original: "img/" + img1 + "-" + color + ".png",
               },
               {
                 original: img2,
               },
             ];
+            let options = [];
+            if (colors) {
+              colors.map(
+                (element) =>
+                  (options = [...options, { value: element, label: element }])
+              );
+            }
 
             return (
-              <div className="row">
-                <div className="col-10 mx-auto text-center text-slanter text-blue my-5">
+              <div>
+                <div className="col-10 mx-auto text-center text-slanter my-5">
                   <h1>{title}</h1>
                 </div>
-                <div className="row">
+                <div>
                   <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
                     <ImageGallery
                       className="img-fluid"
@@ -50,9 +61,8 @@ export default class Details extends Component {
                       showPlayButton={false}
                       showFullscreenButton={false}
                     />
-                    ;
                   </div>
-                  <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
+                  <div className="col-10 mx-auto col-md-6 my-3">
                     <h4 className="text-title text-uppercase text-muted mt-3 mb-2">
                       made by :{" "}
                       <span className="text-uppercase">{company}</span>
@@ -66,10 +76,17 @@ export default class Details extends Component {
                       some info about product:
                     </p>
                     <p className="text-muted lead">{info}</p>
-                    <div>
-                      <Link to="/">
-                        <div className="text-click">back to products</div>
-                      </Link>
+
+                    <div className="col-sm-10 pt-3 text-center m-auto">
+                      <h5>COLOR</h5>
+                      <Select
+                        className="pb-5 col-5 m-auto"
+                        options={options}
+                        onChange={(value) => {
+                          setColor(id, value.value);
+                        }}
+                        defaultValue={{ label: color, value: color }}
+                      />
                       <button
                         className="cart-btn"
                         disabled={out ? true : false}
@@ -81,11 +98,13 @@ export default class Details extends Component {
                           <div className="text-red">SOLD OUT</div>
                         ) : (
                           <div>
-                            <i className="fas fa-cart-arrow-down " />
-                            <div className="text-click">Add to cart</div>
+                            <p className="text-click">PURCHASE</p>
                           </div>
                         )}
                       </button>
+                      <Link to="/">
+                        <div className="text-click">STORE</div>
+                      </Link>
                     </div>
                   </div>
                 </div>

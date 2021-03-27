@@ -13,9 +13,12 @@ export default class Product extends Component {
       img2,
       price,
       inCart,
+      color,
+      colors,
       out,
       hidden,
     } = this.props.product;
+    const imgColor = "img/" + img1 + "-" + color + ".png";
     return (
       <ProductWrapper
         hidden={hidden}
@@ -29,7 +32,7 @@ export default class Product extends Component {
                 onClick={() => value.handleDetail(id)}
               >
                 <Link to="/details">
-                  <img src={img1} alt="product" className="card-img-top" />
+                  <img src={imgColor} alt="product" className="card-img-top" />
                 </Link>
 
                 <button
