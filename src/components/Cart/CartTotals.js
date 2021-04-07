@@ -18,7 +18,7 @@ export default class CartTotals extends Component {
         {!emptyCart && (
           <div className="container-fluid col-8">
             <div className="row">
-              <div className="m-auto ml-lg-auto mr-lg-0 text-capitalize text-center text-lg-right">
+              <div className="m-auto ml-lg-auto mr-lg-0 text-capitalize text-center text-lg-left">
                 <Link to="/">
                   <button
                     className="btn btn-outline-danger text-uppercase mb-3 px-5"
@@ -48,13 +48,15 @@ export default class CartTotals extends Component {
                     NO REFUNDS
                   </span>
                 </h5>
-                <PayPalButton
-                  totalAmount={cartTotal}
-                  clearCart={clearCart}
-                  history={history}
-                  setOrder={setOrder}
-                />
               </div>
+            </div>
+            <div className="col-10 text-center p-5 m-auto">
+              <PayPalButton
+                totalAmount={cartTotal}
+                clearCart={clearCart}
+                history={history}
+                setOrder={setOrder}
+              />
             </div>
             <div className="text-center">
               <Link to="/">

@@ -22,6 +22,11 @@ export default class MyApp extends React.Component {
       // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
       // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
     };
+    let styles = {
+      size: "responsive",
+      label: "buynow",
+      color: "black",
+    };
 
     let env = "production"; // you can set here to 'production' for production
     let currency = "USD"; // or you can set this value from your props or state
@@ -29,7 +34,8 @@ export default class MyApp extends React.Component {
     // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
 
     const client = {
-      sandbox: "A8Vpc0Ws5acpR3s0gcM6u4Qtk1utAnfCHmkkzMqv",
+      sandbox:
+        "AcTWlCZSmvDEmLW25Jpumq3X6k1cXyi4pEgn0dcqv5yR2ULMDPPF4NV3ROQWrkKfsDyuydYaATRJmWK_",
       production:
         "AcmBuAmAt6gbP684tCk8CjF-kiSUC7IF56EaNiPmfSGCZyHSZGczJZ3_G-O4bV3ZuCefAfRm3HafENRc",
     };
@@ -49,6 +55,7 @@ export default class MyApp extends React.Component {
         onError={onError}
         onSuccess={onSuccess}
         onCancel={onCancel}
+        style={styles}
       />
     );
   }

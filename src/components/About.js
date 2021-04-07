@@ -12,11 +12,34 @@ export default class About extends Component {
             <div className="row">
               <div className="p-2 m-auto col-10 ">
                 <div className="text-center">
+                  <strong>WHAT</strong>
+                </div>
+                <div className="text-justify">
+                  <p>
+                    Fuego is a designer brand and our mission is to spread good
+                    vibes and fun clothing. We offer custom clothing designs and
+                    custom branding for all your needs. As the brand grows, we
+                    will begin branching out to the Marijuana Retail scene.
+                    Everything is currently designed/produced by CEO Angelo Rin.
+                    Everything that you see including this website has been
+                    built from scratch. Fuego manages shipping and printing
+                    services itself. Our embroidery designs are the pride of
+                    this brand as we plan to rollout many simple but elegant
+                    designs. Our designs will make you standout anywhere, and
+                    the best part is the prices! We strive to connect with our
+                    audience and welcome all supporters into the Fuego family.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="p-2 m-auto col-10 ">
+                <div className="text-center">
                   <strong>WHY</strong>
                 </div>
                 <div className="text-justify">
                   <p>
-                    So it all started in a highschool math class with a couple
+                    It all started in a highschool math class with a couple
                     friends. The minds coming together to think of something
                     that would soon become an entire brand. I was extremely
                     interested at the fact that we all enjoyed up with the name

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Product from "./Product";
 import Title from "./Title";
 import { ProductConsumer } from "../context";
+import CountUp from "react-countup";
 
 export class ProductList extends Component {
   render() {
@@ -19,6 +20,12 @@ export class ProductList extends Component {
                 }}
               </ProductConsumer>
             </div>
+            <Title
+              name="SALES"
+              title={
+                <CountUp end={12} duration={5} className="col-10 text-center" />
+              }
+            />
           </div>
         </div>
       </React.Fragment>

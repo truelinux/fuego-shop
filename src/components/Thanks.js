@@ -60,7 +60,9 @@ export default function Thanks() {
                       items =
                         items +
                         product.title +
-                        " - $" +
+                        " - (" +
+                        product.color +
+                        ") $" +
                         product.total +
                         " x " +
                         product.count +

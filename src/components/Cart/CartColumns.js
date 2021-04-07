@@ -13,17 +13,17 @@ export default function CartColumns() {
         <div className="col-10 mx-auto col-lg-1">
           <p className="text-uppercase">size</p>
         </div>
+        <div className="col-10 mx-auto col-lg-2">
+          <p className="text-uppercase">color</p>
+        </div>
         <div className="col-10 mx-auto col-lg-1">
           <p className="text-uppercase">price</p>
         </div>
-        <div className="col-10 mx-auto col-lg-2">
+        <div className="col-10 mx-auto col-lg-3">
           <p className="text-uppercase">amount</p>
         </div>
         <div className="col-10 mx-auto col-lg-1">
           <p className="text-uppercase">remove</p>
-        </div>
-        <div className="col-10 mx-auto col-lg-2">
-          <p className="text-uppercase">total</p>
         </div>
       </div>
     </div>
