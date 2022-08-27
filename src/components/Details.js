@@ -88,7 +88,7 @@ export default class Details extends Component {
                         defaultValue={{ label: color, value: color }}
                       />
                       <button
-                        className="cart-btn"
+                        className="button-border"
                         disabled={out ? true : false}
                         onClick={() => {
                           value.openModal(id);
@@ -97,13 +97,11 @@ export default class Details extends Component {
                         {out ? (
                           <div className="text-red">SOLD OUT</div>
                         ) : (
-                          <div>
-                            <p className="text-click">PURCHASE</p>
-                          </div>
+                          <p className="text-click" id="purchase-btn">PURCHASE</p>
                         )}
                       </button>
                       <Link to="/">
-                        <div className="text-click">STORE</div>
+                        <div className="text-click">HOME</div>
                       </Link>
                     </div>
                   </div>
@@ -117,12 +115,9 @@ export default class Details extends Component {
   }
 }
 const ProductWrapper = styled.div`
-  .cart-btn {
-    padding: 0.2 rem 0.4rem;
-    background: var(--lightBlue);
-    border: none;
-    color: var(--purpleDark);
-    font-size: 2.5rem;
-    border-radius: 0.5rem 0 0 0;
+
+  #purchase-btn {
+    font-size: 2rem;
+    color:green;
   }
 `;

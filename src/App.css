@@ -23,9 +23,18 @@ body {
   width: 85%;
   display: block;
 }
-
+.button-border {
+  padding: 10px;
+  background: transparent;
+  border: black solid 1px;
+  border-radius: 0.5rem;
+  transition: all 0.5s ease-in-out;
+}
+.button-border:hover {
+    background: lightgray;
+}
 .text-click {
-  text-decoration: underline;
+  margin: 1px;
   color: var(--purpleDark);
   font-weight: 800;
   font-size: 1.5rem;
